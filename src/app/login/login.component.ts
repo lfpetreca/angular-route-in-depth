@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
-import {Router} from '@angular/router';
-import {AuthStore} from '../services/auth.store';
+import { Router } from '@angular/router';
+import { AuthStore } from '../services/auth.store';
 
 @Component({
   selector: 'login',
@@ -35,12 +35,14 @@ export class LoginComponent implements OnInit {
     const val = this.form.value;
 
     this.auth.login(val.email, val.password)
-        .subscribe(
-            () => {},
-            err => {
-                alert("Login failed!");
-            }
-        );
+      .subscribe(
+        () => {
+          this.router.navigateByUrl('/courses');
+        },
+        err => {
+          alert("Login failed!");
+        }
+      );
 
 
 
